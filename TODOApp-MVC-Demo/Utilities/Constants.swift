@@ -34,6 +34,7 @@ struct URLs {
     static let task = base + "/task"
     static let getUser = user + "/me"
     static let logout = user + "/logout"
+    static let uploadImage = user + "/me/avatar"
     
 }
 
@@ -68,4 +69,5 @@ struct AlertMess {
     static let inUseEmail = "Email already in use, please try another email"
     static let logoutFail = "Faild to logout, please try again"
     static let taskFail = "Couldn't add your task, Please try again"
+    static let deleteMess = "Are you sure you want to delete the selected task!"
 }

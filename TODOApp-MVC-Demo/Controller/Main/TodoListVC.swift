@@ -5,7 +5,7 @@ class TodoListVC: UIViewController {
     // MARK:- IBOutlets
     @IBOutlet weak var tableView: UITableView!
     // MARK:- Properties
-    var tasksArr = [TaskData]()
+    private var tasksArr = [TaskData]()
     
     // MARK:- Lifecycle methods
     override func viewDidLoad() {
@@ -36,6 +36,8 @@ class TodoListVC: UIViewController {
 extension TodoListVC {
     // MARK:- API
     private func getAllTasks() {
+        self.view.showLoader()
+        
         APIManager.getAllTasks { (error, taskResponse) in
             if let error = error {
                 print(error)
@@ -43,8 +45,24 @@ extension TodoListVC {
                 self.tasksArr = taskResponse.data
                 self.tableView.reloadData()
             }
+            self.view.hideLoader()
         }
     }
+    
+    private func deleteTask(with id: String) {
+        self.view.showLoader()
+        
+        APIManager.deleteTask(with: id) { (succ) in
+            if succ {
+                print("XX")
+                self.getAllTasks()
+            } else {
+                print("OO")
+            }
+            self.view.hideLoader()
+        }
+    }
+    
     // MARK:- Private Methods
     private func goToTaskEntryVC() {
         let taskEntryVC = TaskEntryVC.create()
@@ -74,20 +92,28 @@ extension TodoListVC: UITableViewDelegate, UITableViewDataSource{
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Cells.taskCell, for: indexPath) as? TaskCell else {
             return UITableViewCell()
         }
+        cell.delegate = self
         cell.configCell(task: self.tasksArr[indexPath.row])
         return cell
     }
-    
-    
 }
-
-
 
 extension TodoListVC: refreshDataDelegate {
     func refreshData() {
         getAllTasks()
-        
+    }
+}
+
+extension TodoListVC: DeleteTaskDelegate {
+    func deleteTask(cell: UITableViewCell) {
+ 
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        showAlert(message: AlertMess.deleteMess, title: AlertMess.title, handler: { alert in
+            self.deleteTask(with: self.tasksArr[indexPath.row].id)
+            
+        })
     }
     
     
 }
+

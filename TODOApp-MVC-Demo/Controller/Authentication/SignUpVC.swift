@@ -49,8 +49,9 @@ extension SignUpVC {
                             email: email,
                             password: password,
                             age: age)
-        
+        self.view.showLoader()
         APIManager.register(with: user) { (error, registerData) in
+            
             if let error = error {
                 self.showSimpleAlert(message: AlertMess.inUseEmail, title: AlertMess.title)
                 print(error.localizedDescription)
@@ -59,6 +60,7 @@ extension SignUpVC {
                 UserDefaultsManager.shared().token = registerData.token
                 self.goToTodoListVC()
             }
+            self.view.hideLoader()
         }
     }
     // MARK:- PrivateMethods

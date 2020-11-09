@@ -8,13 +8,27 @@
 
 import UIKit
 
+protocol DeleteTaskDelegate: AnyObject {
+    func deleteTask(cell: UITableViewCell)
+    
+    
+}
+
 class TaskCell: UITableViewCell {
     
     @IBOutlet weak var descriptionLabel: UILabel!
     
+    weak var delegate: DeleteTaskDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    }
+    
+    // MARK:- IBActions
+    
+    @IBAction func deleteTask(_ sender: UIButton) {
+        delegate?.deleteTask(cell: self)
     }
     
     // MARK:- Methods
@@ -30,3 +44,5 @@ class TaskCell: UITableViewCell {
     }
     
 }
+
+

@@ -17,17 +17,28 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ld-lG-uyf">
-                        <rect key="frame" x="20" y="30" width="356" height="60"/>
+                        <rect key="frame" x="20" y="30" width="265" height="60"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QZ2-cW-xNa">
+                        <rect key="frame" x="339" y="37.5" width="37" height="45"/>
+                        <state key="normal" image="trash" catalog="system"/>
+                        <connections>
+                            <action selector="deleteTask:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="4H4-oq-GPV"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="2Ld-lG-uyf" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.9" id="8sM-pV-AsP"/>
-                    <constraint firstItem="2Ld-lG-uyf" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="aG5-wo-oXx"/>
-                    <constraint firstItem="2Ld-lG-uyf" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="jaz-PO-OpH"/>
-                    <constraint firstItem="2Ld-lG-uyf" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="0.5" id="oEq-M5-FC5"/>
+                    <constraint firstAttribute="trailing" secondItem="QZ2-cW-xNa" secondAttribute="trailing" constant="20" id="Oyt-YX-4Rg"/>
+                    <constraint firstItem="2Ld-lG-uyf" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="0.5" id="dX0-dC-wlX"/>
+                    <constraint firstItem="QZ2-cW-xNa" firstAttribute="centerY" secondItem="2Ld-lG-uyf" secondAttribute="centerY" id="g4F-aQ-IfK"/>
+                    <constraint firstItem="QZ2-cW-xNa" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.0934343" id="hip-oT-87H"/>
+                    <constraint firstItem="2Ld-lG-uyf" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="jmE-9a-bhl"/>
+                    <constraint firstItem="2Ld-lG-uyf" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.669192" id="lKB-mD-kkE"/>
+                    <constraint firstItem="QZ2-cW-xNa" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="0.375" id="lXh-h0-cWT"/>
+                    <constraint firstItem="2Ld-lG-uyf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="r27-j3-mWg"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -37,4 +48,7 @@
             <point key="canvasLocation" x="186.95652173913044" y="125.89285714285714"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="trash" catalog="system" width="60" height="64"/>
+    </resources>
 </document>
